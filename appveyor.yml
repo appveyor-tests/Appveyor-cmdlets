@@ -4,7 +4,8 @@ init:
 - sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
 
 test_script:
-- ps: Push-Artifact .profile
-- sh: pwsh Push-Artifact .profile
+- sh: appveyor PushArtifact .profile
+- ps: Push-AppveyorArtifact .profile
+- sh: pwsh Push-AppveyorArtifact .profile
 
 build: off
