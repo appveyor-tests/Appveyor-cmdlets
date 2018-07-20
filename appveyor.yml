@@ -4,7 +4,7 @@ init:
 - sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
 - sh: cat $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 
-build:
+build_script:
 - sh: echo "this is a test artifact file" >artifact
 
 test_script:
