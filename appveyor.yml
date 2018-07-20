@@ -2,7 +2,7 @@ init:
 - appveyor version
 - sh: echo $APPVEYOR_BUILD_WORKER_CLOUD
 - sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
-- sh: cat .config/powershell/Microsoft.PowerShell_profile.ps1
+- sh: cat $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 test_script:
 - sh: appveyor PushArtifact ~/.profile
