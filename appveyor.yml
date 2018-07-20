@@ -6,11 +6,17 @@ init:
 
 build_script:
 - sh: echo "this is a test artifact file" >artifact
+- sh: echo "this is a test artifact file" >.artifact
 
 test_script:
 - sh: appveyor PushArtifact artifact
 - ps: Push-AppveyorArtifact artifact
 - sh: pwsh -c 'Push-AppveyorArtifact artifact'
+
+- ps: Push-AppveyorArtifact .artifact
+- ps: Push-AppveyorArtifact ./artifact
+- ps: Push-AppveyorArtifact $env:HOME/versions.log
+- ps: Push-AppveyorArtifact ~/versions.log
 
 - sh: appveyor AddMessage "Message 1" -Category Information
 - ps: Add-AppveyorMessage -Message "Message 2" -Category Information
