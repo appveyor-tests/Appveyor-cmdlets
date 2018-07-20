@@ -3,6 +3,8 @@ init:
 - sh: echo $APPVEYOR_BUILD_WORKER_CLOUD
 - sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
 - sh: cat $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
+
+build:
 - sh: echo "this is a test artifact file" >artifact
 
 test_script:
@@ -34,4 +36,3 @@ test_script:
 #- ps: 
 #- sh: pwsh -c 
 
-build: off
