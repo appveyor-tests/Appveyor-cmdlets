@@ -13,10 +13,11 @@ test_script:
 - ps: Push-AppveyorArtifact artifact
 - sh: pwsh -c 'Push-AppveyorArtifact artifact'
 
+# check different paths
 - ps: Push-AppveyorArtifact .artifact
 - ps: Push-AppveyorArtifact ./artifact
 - ps: Push-AppveyorArtifact $env:HOME/versions.log
-- ps: Push-AppveyorArtifact ~/versions.log
+#- ps: Push-AppveyorArtifact ~/versions.log
 
 - sh: appveyor AddMessage "Message 1" -Category Information
 - ps: Add-AppveyorMessage -Message "Message 2" -Category Information
