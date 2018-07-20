@@ -8,4 +8,16 @@ test_script:
 - ps: Push-AppveyorArtifact ~/.profile
 - sh: pwsh Push-AppveyorArtifact ~/.profile
 
+- sh: appveyor AddMessage "Message 1" -Category Information
+- ps: Add-AppveyorMessage -Message "Message 2" -Category Information
+- sh: pwsh Add-AppveyorMessage -Message "Message 3" -Category Information
+
+- sh: appveyor AddCompilationMessage "Compilation Message 1" -Category Information
+- ps: Add-AppveyorCompilationMessage -Message "Compilation Message 2" -Category Information
+- sh: pwsh Add-AppveyorCompilationMessage -Message "Compilation Message 3" -Category Information
+
+- sh: appveyor
+- ps: 
+- sh: pwsh 
+
 build: off
