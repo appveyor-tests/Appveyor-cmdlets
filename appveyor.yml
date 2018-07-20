@@ -16,8 +16,16 @@ test_script:
 - ps: Add-AppveyorCompilationMessage -Message "Compilation Message 2" -Category Information
 - sh: pwsh Add-AppveyorCompilationMessage -Message "Compilation Message 3" -Category Information
 
-- sh: appveyor
-- ps: 
-- sh: pwsh 
+- sh: appveyor SetVariable -Name 'MyVar1' -Value 'This is a test message'
+- ps: Set-AppveyorBuildVariable 'MyVar2' 'This is a test message'
+- sh: pwsh Set-AppveyorBuildVariable 'MyVar3' 'This is a test message'
+
+- sh: appveyor AddTest -Name "Test A" -Framework NUnit -Filename a.exe
+- ps: Add-AppveyorTest -Name "Test B" -Framework NUnit -Filename b.exe
+- sh: pwsh Add-AppveyorTest -Name "Test C" -Framework NUnit -Filename c.exe
+
+- sh: appveyor UpdateTest -Name "Test A" -Framework NUnit -FileName a.exe -Duration 123
+- ps: Update-AppveyorTest -Name "Test B" -Framework NUnit -FileName b.exe -Duration 234
+- sh: pwsh Update-AppveyorTest -Name "TestC" -Framework NUnit -FileName c.exe -Duration 345
 
 build: off
