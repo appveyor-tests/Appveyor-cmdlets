@@ -2,11 +2,12 @@ init:
 - appveyor version
 - sh: echo $APPVEYOR_BUILD_WORKER_CLOUD
 - sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
+- sh: cat .config/powershell/Microsoft.PowerShell_profile.ps1
 
 test_script:
-#- sh: appveyor PushArtifact ~/.profile
-#- ps: Push-AppveyorArtifact ~/.profile
-#- sh: pwsh Push-AppveyorArtifact ~/.profile
+- sh: appveyor PushArtifact ~/.profile
+- ps: Push-AppveyorArtifact ~/.profile
+- sh: pwsh Push-AppveyorArtifact ~/.profile
 
 - sh: appveyor AddMessage "Message 1" -Category Information
 - ps: Add-AppveyorMessage -Message "Message 2" -Category Information
