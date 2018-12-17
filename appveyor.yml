@@ -42,5 +42,5 @@ test_script:
 
 - sh: appveyor UpdateBuild -Message "Build Message 1"
 - ps: Update-AppveyorBuild -Message "Build Message 2"
-- sh: pwsh -c 'Update-AppveyorBuild -Message "Build Message 3"
+- sh: pwsh -c 'Update-AppveyorBuild -Message "Build Message 3"'
 
