@@ -36,8 +36,8 @@ test_script:
 - sh: pwsh -c 'Add-AppveyorTest -Name "Test C" -Framework NUnit -Filename c.exe'
 
 - sh: appveyor UpdateTest -Name "Test A" -Framework NUnit -Outcome Passed -FileName a.exe -Duration 123 
-- ps: Update-AppveyorTest -Name "Test B" -Framework NUnit --Outcome Passed -FileName b.exe -Duration 234
-- sh: pwsh -c 'Update-AppveyorTest -Name "TestC" -Framework NUnit --Outcome Passed -FileName c.exe -Duration 345'
+- ps: Update-AppveyorTest -Name "Test B" -Framework NUnit -Outcome Passed -FileName b.exe -Duration 234
+- sh: pwsh -c 'Update-AppveyorTest -Name "TestC" -Framework NUnit -Outcome Passed -FileName c.exe -Duration 345'
 
 
 - sh: appveyor UpdateBuild -Message "Build Message 1"
