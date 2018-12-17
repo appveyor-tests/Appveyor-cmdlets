@@ -35,11 +35,12 @@ test_script:
 - ps: Add-AppveyorTest -Name "Test B" -Framework NUnit -Filename b.exe
 - sh: pwsh -c 'Add-AppveyorTest -Name "Test C" -Framework NUnit -Filename c.exe'
 
-- sh: appveyor UpdateTest -Name "Test A" -Framework NUnit -FileName a.exe -Duration 123
-- ps: Update-AppveyorTest -Name "Test B" -Framework NUnit -FileName b.exe -Duration 234
-- sh: pwsh -c 'Update-AppveyorTest -Name "TestC" -Framework NUnit -FileName c.exe -Duration 345'
+- sh: appveyor UpdateTest -Name "Test A" -Framework NUnit -Outcome Passed -Duration 123 
+- ps: Update-AppveyorTest -Name "Test B" -Framework NUnit --Outcome Passed -Duration 234
+- sh: pwsh -c 'Update-AppveyorTest -Name "TestC" -Framework NUnit --Outcome Passed -Duration 345'
 
-#- sh: appveyor 
-#- ps: 
-#- sh: pwsh -c 
+
+- sh: appveyor UpdateBuild -Message "Biuld Message 2"
+- ps: Update-AppveyorBuild -Message "Biuld Message 2"
+- sh: pwsh -c 'Update-AppveyorBuild -Message "Biuld Message 3"
 
