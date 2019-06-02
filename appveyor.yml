@@ -16,7 +16,7 @@ test_script:
 # check different paths
 - ps: Push-AppveyorArtifact .artifact
 - ps: Push-AppveyorArtifact ./artifact
-- ps: Push-AppveyorArtifact $env:HOME/artifact
+- ps: Push-AppveyorArtifact $env:APPVEYOR_BUILD_FOLDER/artifact
 
 - sh: appveyor AddMessage "Message 1" -Category Information
 - ps: Add-AppveyorMessage -Message "Message 2" -Category Information
