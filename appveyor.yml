@@ -11,7 +11,7 @@ build_script:
 test_script:
 - appveyor PushArtifact artifact
 - ps: Push-AppveyorArtifact artifact
-- pwsh -c 'Push-AppveyorArtifact artifact'
+- sh: pwsh -c 'Push-AppveyorArtifact artifact'
 
 # check different paths
 - ps: Push-AppveyorArtifact .artifact
@@ -20,26 +20,24 @@ test_script:
 
 - appveyor AddMessage "Message 1" -Category Information
 - ps: Add-AppveyorMessage -Message "Message 2" -Category Information
-- pwsh -c 'Add-AppveyorMessage -Message "Message 3" -Category Information'
+- sh: pwsh -c 'Add-AppveyorMessage -Message "Message 3" -Category Information'
 
-- appveyor AddCompilationMessage "Compilation Message 1" -Category Information
-- ps: Add-AppveyorCompilationMessage -Message "Compilation Message 2" -Category Information
-- pwsh -c 'Add-AppveyorCompilationMessage -Message "Compilation Message 3" -Category Information'
+- appveyor AddCompilationMessage "Compilation Message 1" -Category Information -Line 1 -Column 2
+- ps: Add-AppveyorCompilationMessage -Message "Compilation Message 2" -Category Information -Line 1 -Column 2
+- sh: pwsh -c 'Add-AppveyorCompilationMessage -Message "Compilation Message 3" -Category Information -Line 1 -Column 2'
 
 - appveyor SetVariable -Name 'MyVar1' -Value 'This is a test message'
 - ps: Set-AppveyorBuildVariable 'MyVar2' 'This is a test message'
-- pwsh -c "Set-AppveyorBuildVariable 'MyVar3' 'This is a test message'"
+- sh: pwsh -c "Set-AppveyorBuildVariable 'MyVar3' 'This is a test message'"
 
 - appveyor AddTest -Name "Test A" -Framework NUnit -Filename a.exe
 - ps: Add-AppveyorTest -Name "Test B" -Framework NUnit -Filename b.exe
-- pwsh -c 'Add-AppveyorTest -Name "Test C" -Framework NUnit -Filename c.exe'
+- sh: pwsh -c 'Add-AppveyorTest -Name "Test C" -Framework NUnit -Filename c.exe'
 
 - appveyor UpdateTest -Name "Test A" -Framework NUnit -Outcome Passed -FileName a.exe -Duration 123 
 - ps: Update-AppveyorTest -Name "Test B" -Framework NUnit -Outcome Passed -FileName b.exe -Duration 234
-- pwsh -c 'Update-AppveyorTest -Name "TestC" -Framework NUnit -Outcome Passed -FileName c.exe -Duration 345'
-
+- sh: pwsh -c 'Update-AppveyorTest -Name "TestC" -Framework NUnit -Outcome Passed -FileName c.exe -Duration 345'
 
 - appveyor UpdateBuild -Message "Build Message 1"
 - ps: Update-AppveyorBuild -Message "Build Message 2"
-- pwsh -c 'Update-AppveyorBuild -Message "Build Message 3"'
-
+- sh: pwsh -c 'Update-AppveyorBuild -Message "Build Message 3"'
