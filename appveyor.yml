@@ -52,10 +52,10 @@ test_script:
         fileName="tests.dll"
         outcome="Passed"
         durationMilliseconds="1200"
-        ErrorMessage=""
+        ErrorMessage="Exception message"
         ErrorStackTrace=""
-        StdOut=""
-        StdErr=""
+        StdOut="STDOUT output"
+        StdErr="Errors"
     }
     $body = $body | ConvertTo-Json
     Invoke-RestMethod -Uri "$($env:APPVEYOR_API_URL)api/tests" -Headers $headers  -Body $body -Method POST
