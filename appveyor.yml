@@ -1,7 +1,7 @@
 init:
 - appveyor version
-- sh: echo $APPVEYOR_BUILD_WORKER_CLOUD
-- sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
+- ps: $env:APPVEYOR_BUILD_WORKER_CLOUD
+- ps: $env:APPVEYOR_BUILD_WORKER_IMAGE
 - sh: cat $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 build_script:
@@ -41,3 +41,21 @@ test_script:
 - appveyor UpdateBuild -Message "Build Message 1"
 - ps: Update-AppveyorBuild -Message "Build Message 2"
 - sh: pwsh -c 'Update-AppveyorBuild -Message "Build Message 3"'
+
+- ps: |
+    $headers = @{
+      "Content-type" = "application/json"
+    }
+    $body = @{
+        testName="Test from PowerShell"
+        testFramework="NUnit"
+        fileName="tests.dll"
+        outcome="Passed"
+        durationMilliseconds="1200"
+        ErrorMessage=""
+        ErrorStackTrace=""
+        StdOut=""
+        StdErr=""
+    }
+    $body = $body | ConvertTo-Json
+    Invoke-RestMethod -Uri "$($env:APPVEYOR_API_URL)api/tests" -Headers $headers  -Body $body -Method POST
